@@ -6,16 +6,18 @@
  * @return Integer[]
  */
 function twoSum($nums, $target) {
+
+    $map = [];
+
    for ($i=0; $i < count($nums); $i++)
    {
+       $difference = $target - $nums[$i];
 
-      for ($j = $i+1; $j < count($nums); $j++)
-      {
-          if ( ($nums[$i] + $nums[$j]) == $target)
-          {
-              return [$i, $j];
-          }
-      }
+       if (isset($map[$difference]))
+       {
+           return [$map[$difference], $i];
+       }
+       $map[$nums[$i]] = $i;
    }
 
 }
@@ -29,4 +31,4 @@ $target2 = 6;
 $nums3 = [3,3]; //[0,1]
 $target3 = 6;
 
-print_r(twoSum($nums2,$target2));
+print_r(twoSum($nums3,$target3));
